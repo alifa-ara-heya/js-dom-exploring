@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Explore More Events</h1>
+    <button id="btn-click">Events</button>
+    <button id="btn-mouseenter">Enter the mouse</button>
+    <button id="btn-mousemove">Move your mouse</button>
+    <input type="text" id="text-field">
+
+    <script>
+        document.getElementById('btn-click').addEventListener('click', function () {
+            console.log('event triggered');
+        })
+        document.getElementById('btn-mouseenter').addEventListener('mouseenter', function () {
+            console.log('Mouse Entered');
+        })
+        document.getElementById('btn-mousemove').addEventListener('mousemove', function () {
+            console.log('Mouse Moved');
+        })
+        
+        // input events
+        document.getElementById("text-field").addEventListener('focus', function () {
+            console.log("Event triggered by the input field");
+        })
+        document.getElementById("text-field").addEventListener('blur', function () {
+            console.log("Event triggered by the input field, blurred");
+        })
+
+        // type events
+        document.getElementById("text-field").addEventListener('keydown', function (event) {
+            console.log(event.target.value); //getting the value of the input, but some problems
+        })
+        document.getElementById("text-field").addEventListener('keypress', function (event) {
+            console.log(event.target.value); //getting the value of the input, but some problems
+        })
+        document.getElementById("text-field").addEventListener('keyup', function (event) {
+            console.log(event.target.value); //most used when we need to get the value
+        })
+    </script>
+    hi
+</body>
+
+</html>

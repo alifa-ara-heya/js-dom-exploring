@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+
+<body>
+    <h1>DOM er ajke event</h1>
+    <button onclick="console.log('Hi, my fav num is 7')">Click me</button>
+    <button title="Hi! This is a tooltip" onclick="console.log(6)">Click Click</button>
+    <br>
+
+    <!-- option-1, we will not use this much -->
+    <button onclick = "document.body.style.backgroundColor = 'yellow'">Make yellow</button>
+    <script src="./js/events.js"></script>
+
+    <!-- option 2, we will use this sometimes, important!!!! -->
+    <button onclick="makeRed()">Make Red</button>
+    <!-- here we are calling the function, that's why used brackets  -->
+    <script>
+        // anonymous function
+        function makeRed() {
+            document.body.style.backgroundColor = "red";
+        }
+    </script>
+
+    <!-- option-3 -->
+    <button id="make-blue">Make Blue</button>
+    <script>
+        const makeBlueBtn = document.getElementById('make-blue');
+        makeBlueBtn.onclick = makeBlue; //We are setting the value of onclick, so there is no need for the bracket.
+        function makeBlue() {
+            document.body.style.backgroundColor = "blue";
+        }
+    </script>
+
+    <!-- option 3.a, sometimes used!!! -->
+    <button id="make-purple">Make Purple</button>
+    <script>
+        const makePurpleBtn = document.getElementById("make-purple");
+        makePurpleBtn.onclick = function makePurple() {
+            document.body.style.backgroundColor = "purple";
+        }
+    </script>
+
+    <!-- option-4 //addEventListener-->
+    <button id="pink-btn">Make Pink</button>
+    <script>
+        const pinkBtn = document.getElementById('pink-btn');
+
+        pinkBtn.addEventListener('click', makePink);
+
+        function makePink(){
+            document.body.style.backgroundColor = "pink";
+        }
+    </script>
+
+    <!-- option-4.a (almost same to 4) -->
+    <button id="green-btn">Make Green</button>
+    <script>
+        const greenBtn = document.getElementById('green-btn');
+        greenBtn.addEventListener('click', function makeGreen(){
+            document.body.style.backgroundColor = "green";
+        })
+    </script>
+
+    <!-- option 4 er another version, most used!!!! -->
+    <button id="golden-btn">Make Golden</button>
+    <script>
+        document.getElementById('golden-btn').addEventListener('click', function(){
+            document.body.style.backgroundColor = "goldenrod";
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- (for the sake of understanding, I am adding script tag inside the html elements. The best practice is to use the script tag at the last of the body tag) -->
+    <h1>Final DOM event handlers</h1>
+    <h3 id = "handler-text">Default Text</h3>
+    <p id="input-text-display">Default Text paragraph</p>
+    <input type="text" id="input-field">
+    <button id = "update-btn">Update</button>
+
+    <script>
+        document.getElementById("update-btn").addEventListener('click', function(){
+            const inputField = document.getElementById("input-field");
+            // console.log(inputField.value); //it will show us the value of the input
+            // now, we will update the default text paragraph with the value of the input
+            const inputText = inputField.value;
+            
+            
+            const p = document.getElementById("input-text-display");
+            p.innerText = inputText;
+
+            // after clicking the update btn, we want to clear the value. how?
+
+            inputField.value = "";
+
+        })
+    </script>
+
+    <br>
+    <br>
+
+
+    <button onclick="handleOnClick()">Handle event by adding onclick function</button>
+    <script>
+        function handleOnClick(){
+            const handlerStatus = document.getElementById("handler-text");
+            handlerStatus.innerText = "new text handled by function"
+        }
+    </script>
+    <!-- option-2  -->
+    <button id="event-listener">Handle event by addEventListener</button>
+    <script>
+        document.getElementById("event-listener").addEventListener('click', function(){
+            const eventListenerStatus = document.getElementById("handler-text");
+            eventListenerStatus.innerText = "new text handled by addEventListener"
+        })
+    </script>
+</body>
+</html>

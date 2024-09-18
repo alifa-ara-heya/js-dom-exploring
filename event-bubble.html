@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling</title>
+</head>
+<body id="body">
+    <h1>Exploring Event Bubble</h1>
+    <section id="list-container">
+        <ul id="ul-list">
+            <li id="item-1">Lorem, ipsum.</li>
+            <li id="item-2">Cumque, ipsam.</li>
+            <li id="item-3">Quo, accusamus.</li>
+            <li id="item-4">Sint, eaque.</li>
+            <li id="item-5">Voluptatibus, qui.</li>
+            <li id="item-6">Maxime, sunt.</li>
+        </ul>
+    </section>
+    <script>
+        document.getElementById('item-2').addEventListener('click', function(event){
+            console.log("item-2 clicked");
+            // if we click item-2, all of the parents ul, section, body got clicked. If we don't want this, we will use stop propagataion.
+            event.stopPropagation();
+
+            // but, if we want to stop the events with this same item, like the events below, we will use stopImmediatePropagation.
+
+            event.stopImmediatePropagation();
+        })
+
+        document.getElementById('item-2').addEventListener('click', function(event){
+            console.log("item-2 second clicked");
+        })
+        document.getElementById('item-2').addEventListener('click', function(event){
+            console.log("item-2 third clicked");
+        })
+        document.getElementById('item-2').addEventListener('click', function(event){
+            console.log("item-2 fourth clicked");
+        })
+        document.getElementById('item-2').addEventListener('click', function(event){
+            console.log("item-2 fifth clicked");
+        })
+
+
+
+
+        document.getElementById('ul-list').addEventListener('click', function(){
+            console.log("ul clicked");
+        })
+
+        document.getElementById('list-container').addEventListener('click', function(){
+            console.log("section container clicked");
+        })
+
+
+        document.getElementById('body').addEventListener('click', function(){
+            console.log("body clicked");
+        })
+
+        
+
+    </script>
+</body>
+</html>

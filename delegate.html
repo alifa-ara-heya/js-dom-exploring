@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delegate</title>
+</head>
+
+<body>
+    <h1>Event Delegate</h1>
+    <ul id="list-container">
+        <li class="item">Lorem, ipsum dolor.</li>
+        <li class="item">Aliquid, maiores id!</li>
+        <li class="item">Sit, unde sed.</li>
+        <li class="item">Tempora, laborum dolorem!</li>
+        <li class="item">Incidunt, perferendis culpa!</li>
+        <li class="item">Minima, quos necessitatibus!</li>
+    </ul>
+    <button id="add-new-item">Add New item</button>
+
+    <script>
+        const items = document.getElementsByClassName('item');
+        // getelementsbyclassname gives us array like object, but not a complete array
+        // for(const item of items){
+        //     item.addEventListener('click', function(){
+        // console.log(item);
+        //     })
+
+        // }
+
+        // another way
+        /* for (const item of items) {
+            item.addEventListener('click', function (event) {
+                // console.log(event.target);
+                // event.target gives us the list items
+                // if we want the parent, we can write-
+                // console.log(event.target.parentNode);
+                event.target.parentNode.removeChild(event.target); //this will remove the item when clicked
+            })
+
+        } */
+
+        // adding the event on parent
+        document.getElementById("list-container").addEventListener('click', function(event){
+            event.target.parentNode.removeChild(event.target)
+        })
+
+        // We want to add a new item every time the add new btn is clicked
+
+        document.getElementById('add-new-item').addEventListener('click', function () {
+            const listContainer = document.getElementById("list-container");
+            const li = document.createElement('li');
+            li.innerText = "Brand New Item added";
+
+            li.classList.add('item');
+            listContainer.appendChild(li);
+        });
+        // now we will select the container where we want to add the item.
+
+    </script>
+</body>
+
+</html>
